@@ -6,7 +6,6 @@
 		<title>Linkmein</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/bootstrap.min.css" />
 		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
@@ -56,25 +55,34 @@
 		  </div>
 		</div>
 	  </nav>
-
+	  
+	  <form class="mt-5" action="/login" method="post">
+    	<input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
 	  <div class="card mt-5" style="width: 70rem; margin: auto;">
         <div class="card-body text-center">
 		<label class="form-label mt-4 mb-3" style="font-size:40px;">Welcome to LinkedMeIn Portal</label>
 		
 		<div>
-		  <img src="images/image1.png" class="img-fluid" alt="Responsive image">
+		  <img src="assets/images/register.png" class="img-fluid" alt="Responsive image">
 	  </div>
 		<div class="form-floating mt-2" style="width: 40rem; margin:auto;">
-		  <input type="email" class="form-control" id="email" placeholder="name@example.com">
+		  <input type="email" class="form-control" name="email" id="email" placeholder="name@example.com">
 		  <label for="floatingInput">Email address</label>
 		</div>
 		<div class="form-floating mt-2" style="width: 40rem; margin:auto;">
-		  <input type="password" class="form-control" id="password" placeholder="Password">
+		  <input type="password" class="form-control" name="password" id="password" placeholder="Password">
 		  <label for="floatingPassword">Password</label>
 		</div>
-		<button type="button" class="btn btn-primary mt-2">Login</button>
+		<button type="submit" class="btn btn-primary mt-2">Login</button>
 	  </div>
 	</div>
+	<!-- <c:if test="${error_string != null}">
+					<div class="alert alert-danger mt-3">
+						${error_string}
+					</div>
+				</c:if> -->
+	</form>
 
 	<!-- Footer -->
 <footer class="bg-dark text-center text-white">

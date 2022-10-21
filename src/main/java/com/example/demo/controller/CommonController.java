@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,8 +18,8 @@ public class CommonController {
 	private UserService userService;
 	
 	@GetMapping("/")
-	public String signin() {
-		return "signin";
+	public String homepage() {
+		return "homepage";
 	}
 	
 	@GetMapping("/signup")
@@ -26,15 +27,22 @@ public class CommonController {
 		return "signup";
 	}
 
-	@GetMapping("/homepage")
-	public String homePage() {
-		return "homepage";
+	@GetMapping("/signin")
+	public String getsignin() {
+		return "signin";
 	}
 	
+	// process sign_up (register)
 	@PostMapping("/process_signup")
-	public String registerUser(Model model, @ModelAttribute("user") User user) {
-		userService.saveUser(user); // we dont have any checking if user exist for now, but later
-		return "/signin";
+	public String register(Model model, @ModelAttribute("user") User user) {
+			
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		String encodedPassword = passwordEncoder.encode(user.getPassword()) ;
+		user.setPassword(encodedPassword);
+		
+		userService.saveUser(user);
+			
+		return "signin";
 	}
 }
 

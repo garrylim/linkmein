@@ -23,7 +23,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
-      
+        
         <div class="collapse navbar-collapse" id="navbarColor03">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
@@ -51,9 +51,16 @@
           <a class="nav-link" href="#">About Us</a>
           </li>
         </ul>
-        <div>
-            <button type="button" class="btn btn-outline-dark me-2" style="border: none;">@Garry</button>
-            <button type="button" class="btn btn-danger">Logout</button>
+         <button type="button" class="btn btn-outline-dark me-2" style="border: none;">
+            	@<c:out value="${pageContext.request.remoteUser}" />
+            </button>
+            
+            <form action="/logout" method="post">
+            <input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+            	<button type="submit" class="btn btn-danger">Logout</button>
+	    </form>
+        </div>
         </div>
 
     </nav>

@@ -55,8 +55,11 @@
 
     <div class="card mt-5" style="width: 20rem; margin: auto;">
         <div class="card-body text-center">
-            <form class="mb-4" action="/process_signup" method="post" modelattribute="user">
-<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        
+             <form class="mb-4" action="/process_signup" method="post" modelattribute="user">
+            <input type="hidden" name="${_csrf.parameterName}"
+						value="${_csrf.token}" />
+						
                 <h1 class="mb-4">Sign up</h1>
                 <div class="form-group mt-2">
                     <label for="username" class="visually-hidden">username</label>
@@ -68,7 +71,7 @@
                 </div>
                 <div class="form-group mt-2 mb-5">
                     <label for="password" class="visually-hidden">password</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+                    <input type="password" name="Password" id="password" class="form-control" placeholder="Password">
                 </div>
                 <div class="form-group d-grid gap-2">
                     <button class="btn btn-success w-100">Sign up with email</button>
