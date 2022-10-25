@@ -51,19 +51,60 @@
           <a class="nav-link" href="#">About Us</a>
           </li>
         </ul>
-         <button type="button" class="btn btn-outline-dark me-2" style="border: none;">
-            	@<c:out value="${pageContext.request.remoteUser}" />
-            </button>
-            
+         <section>
+              <div class="container">
+              <c:url var="search_url" value="/homepage" />
+              <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+                        <form:form role="search" action="${search_url}" method="post">
+                            <div class="input-group">
+                                  <input class="form-control" name="keyword" type="search" placeholder="Search" aria-label="Search">
+                                  <button class="btn btn-success me-2" type="submit">Search</button>
+                            </div>
+                        </form:form>
+                </div>
+            </section>
+            <ul class="navbar-nav me-2 my-2 my-lg-0 navbar-nav-scroll" modelattribute="loggedinuser" style="--bs-scroll-height: 100px;">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  @<c:out value="${pageContext.request.remoteUser}" />
+                </a>
+                <ul class="dropdown-menu dropdown-menu-lg-end" >
+                  <li><a class="dropdown-item" href="/profile?id=${loggedinuser.id}">Profile</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="/settings">Settings</a></li>
+                  <li><a class="dropdown-item" href="/dashboard">Dashboard</a></li>
+                </ul>
+              </li>
+      </ul>
             <form action="/logout" method="post">
             <input type="hidden" name="${_csrf.parameterName}"
 						value="${_csrf.token}" />
             	<button type="submit" class="btn btn-danger">Logout</button>
 	    </form>
         </div>
-        </div>
 
     </nav>
+    
+    <table class="table card-body text-center">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <c:if test="${not empty users}">
+          <c:forEach var="user" items="${users}">
+          <tr>
+            <th scope="row">${user.id}</th>
+            <td>${user.username}</td>
+            <td>${user.email}</td>
+          </tr>
+          </c:forEach>
+          </c:if>
+        </tbody>
+      </table>
 
     <section>
       <div class="container" style="margin-top: 600px;"></div>

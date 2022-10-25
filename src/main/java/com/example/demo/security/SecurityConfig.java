@@ -49,6 +49,7 @@ public class SecurityConfig {
 			//.antMatchers(HttpMethod.GET, "/contact").permitAll()
 			.antMatchers(HttpMethod.GET, "/signup").permitAll()
 			.antMatchers(HttpMethod.POST, "/process_signup").permitAll()
+			.antMatchers(HttpMethod.GET, "/profile").permitAll()
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
