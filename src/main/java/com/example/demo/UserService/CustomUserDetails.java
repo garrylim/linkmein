@@ -49,4 +49,8 @@ public class CustomUserDetails implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
+	
+	public void setUsername(String username) {
+		this.user.setUsername(username);
+	}
 }

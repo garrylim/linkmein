@@ -74,6 +74,7 @@
 		  <input type="password" class="form-control" name="password" id="password" placeholder="Password">
 		  <label for="floatingPassword">Password</label>
 		</div>
+		<a href="/forgot-password" class="text-primary">Forgot your password?</a><br>
 		<button type="submit" class="btn btn-primary mt-2">Login</button>
 	  </div>
 	</div>

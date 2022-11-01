@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,6 +24,33 @@ public class User {
 	private String city;
 	private String country;
 	
+	@Column(name = "verification_code", length = 64)
+	private String verificationCode;
+	
+	@Column(name = "reset_password_token", length = 6)
+	private String resetPasswordToken;
+	
+	private boolean enabled;
+
+	// Generate Getters and Setters
+	public String getVerificationCode() {
+		return verificationCode;
+	}
+	public void setVerificationCode(String verificationCode) {
+		this.verificationCode = verificationCode;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
 	
 	public Integer getId() {
 		return id;

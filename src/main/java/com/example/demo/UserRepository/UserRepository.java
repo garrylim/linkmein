@@ -27,4 +27,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 			+ " OR s.country LIKE '%' || :keyword || '%'"
 			)
 	public List<User> search(@Param("keyword") String keyword);
+	
+	@Query("SELECT u FROM User u WHERE u.verificationCode = ?1")
+    public User findByVerificationCode(String code);
+	
+	@Query("SELECT u FROM User u WHERE u.resetPasswordToken = ?1")
+	public User findUserByResetPasswordToken(String token);
 }
